@@ -23,5 +23,9 @@ Sistema de compilação Makefile
 
 INTEGRANTES
 Pedro Dornellas Camara Oliveira
+
+
 Gabriel Ângelo
+
+
 João Paulo

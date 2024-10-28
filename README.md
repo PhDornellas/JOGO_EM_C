@@ -11,12 +11,12 @@ Código modularizado, com separação entre lógica do jogo e interface.
 
 
 REGRAS DO JOGO:
-Pedra vence de Tesoura.
-Tesoura vence de Papel.
-Papel vence de Pedra.
+Pedra vence Tesoura.
+Tesoura vence Papel.
+Papel vence Pedra.
 
 TECNOLOGIAS UTILIZADAS:
-Linguagem C
+Linguagem C, 
 Sistema de compilação Makefile
 
 

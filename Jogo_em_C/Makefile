@@ -1,20 +1,33 @@
-# Makefile para compilar o projeto "Adivinhar o Número"
+# Nome do executável
+EXECUTAVEL = jogo
 
+# Diretórios dos arquivos fonte
+SRC_DIR = src
+CLI_LIB_DIR = cli-lib/src
+
+# Arquivos fonte
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/adivinha_numero.c $(CLI_LIB_DIR)/screen.c $(CLI_LIB_DIR)/keyboard.c
+
+# Diretórios para cabeçalhos
+INCLUDE = -Iinclude -Icli-lib/include  # Inclui o diretório de cabeçalhos da cli-lib
+
+# Diretórios para a biblioteca
+LIBDIR = -L$(CLI_LIB_DIR)  # Diretório onde a biblioteca compilada está localizada
+LIBS = -lcli  # Nome da biblioteca (supondo que você tenha libcli.a ou libcli.so)
+
+# Compilador
 CC = gcc
-CFLAGS = -Iinclude
-LDFLAGS = -Lcli-lib -lcli  # Ajuste se necessário para a cli-lib
 
-SRC = src/adivinhar_numero.c
-OBJ = $(SRC:.c=.o)
-TARGET = jogo
+# Flags de compilação
+CFLAGS = -Wall
 
-all: $(TARGET)
+# Alvo padrão
+all: $(EXECUTAVEL)
 
-$(TARGET): $(OBJ)
-    $(CC) $(OBJ) -o $(TARGET) $(LDFLAGS)
+# Regra para compilar o executável
+$(EXECUTAVEL): $(SRC)
+	$(CC) $(CFLAGS) $(INCLUDE) $(SRC) $(LIBDIR) $(LIBS) -o $(EXECUTAVEL)
 
-%.o: %.c
-    $(CC) -c $(CFLAGS) $< -o $@
-
+# Limpeza dos arquivos gerados
 clean:
-    rm -f $(OBJ) $(TARGET)
+	rm -f $(EXECUTAVEL)
